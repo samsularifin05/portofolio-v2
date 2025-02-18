@@ -10,6 +10,7 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypeImgSize from 'rehype-img-size';
 import rehypeSlug from 'rehype-slug';
 import rehypePrism from '@mapbox/rehype-prism';
+import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 
 export default defineConfig({
   assetsInclude: ['**/*.glb', '**/*.hdr', '**/*.glsl'],
@@ -25,6 +26,7 @@ export default defineConfig({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
       providerImportSource: '@mdx-js/react',
     }),
+    netlifyPlugin(),
     remixCloudflareDevProxy(),
     remix({
       routes(defineRoutes) {
